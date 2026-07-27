@@ -11,15 +11,6 @@ class PlaybackRulesTest {
         assertEquals("off", PlaybackRules.nextRepeat("track"))
     }
 
-    @Test fun `remembered PC name resolves a rotated Spotify device id`() {
-        val devices = listOf(
-            SpotifyDevice("new-phone-id", "Phone", "smartphone", true, 80),
-            SpotifyDevice("new-pc-id", "Studio PC", "computer", false, 42)
-        )
-        assertEquals("new-pc-id", PlaybackRules.preferredDevice(devices, "Studio PC")?.id)
-        assertNull(PlaybackRules.preferredDevice(devices, "Missing PC"))
-    }
-
     @Test fun `track selection preserves a playlist or album context`() {
         assertEquals(
             "spotify:playlist:demo",

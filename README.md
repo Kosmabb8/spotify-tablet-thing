@@ -45,7 +45,7 @@ These are real application captures supplied by the project maintainer. They con
 - Context-preserving track selection: choosing a track inside a playlist keeps that playlist active
 - Context-preserving Up Next selection: choosing a queued playlist/album track does not replace the queue with a one-song session
 - Search, queue, recently played, opt-in synchronized/plain lyrics, and artwork-adaptive styling
-- Remembered Windows device name with automatic Spotify device-ID refresh
+- Manual playback-device selection; the controller follows Spotify's active device and never transfers playback automatically
 - Wi-Fi high-performance lock, offline recovery, charging-only screen wake, inactivity dimming, and blackout mode
 - Boot receiver and crash-restart alarm
 - Conservative, optional, reversible ADB debloat scripts
@@ -144,7 +144,7 @@ Before factory-resetting anything, test launcher mode:
 .\scripts\enable-autostart.ps1
 ```
 
-Press Home on the tablet and choose **Car Thing Controller → Always**. Configure the administrator PIN, Spotify Client ID/account, and preferred Windows PC. This mode is reversible and does not erase data, but Android system surfaces remain more accessible than in Device Owner mode.
+Press Home on the tablet and choose **Car Thing Controller → Always**. Configure the administrator PIN and Spotify Client ID/account. Use **Switch playback device** only when you deliberately want to transfer playback. This mode is reversible and does not erase data, but Android system surfaces remain more accessible than in Device Owner mode.
 
 ## Full dedicated mode
 

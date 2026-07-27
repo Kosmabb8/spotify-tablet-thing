@@ -24,14 +24,6 @@ class SecureTokenStore(context: Context) {
         get() = prefs.getString("admin_pin_hash", "") ?: ""
         set(value) { prefs.edit().putString("admin_pin_hash", value).apply() }
 
-    var targetDeviceName: String
-        get() = prefs.getString("target_device_name", "") ?: ""
-        set(value) { prefs.edit().putString("target_device_name", value).apply() }
-
-    var targetDeviceId: String
-        get() = prefs.getString("target_device_id", "") ?: ""
-        set(value) { prefs.edit().putString("target_device_id", value).apply() }
-
     var dimPercent: Int
         get() = prefs.getInt("dim_percent", 12)
         set(value) { prefs.edit().putInt("dim_percent", value.coerceIn(1, 70)).apply() }

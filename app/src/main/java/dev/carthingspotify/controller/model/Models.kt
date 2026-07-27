@@ -63,9 +63,6 @@ object PlaybackRules {
         else -> "off"
     }
 
-    fun preferredDevice(devices: List<SpotifyDevice>, rememberedName: String): SpotifyDevice? =
-        devices.firstOrNull { it.name == rememberedName }
-
     fun contextForSelection(contextUri: String?, itemUri: String): String? =
         contextUri
             ?.trim()

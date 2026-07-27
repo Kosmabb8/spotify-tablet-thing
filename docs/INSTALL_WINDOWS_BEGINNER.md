@@ -24,7 +24,7 @@ The Windows Spotify app is the playback endpoint. No separate Windows companion 
 ## 1. Download the files
 
 1. On the PC, open this repository's **Releases** page.
-2. Download the newest file named like `spotify-car-controller-tb-x505f-v1.0.0.apk` and its `SHA256SUMS.txt` file. If no signed release exists yet, build from source using the README instead of downloading an APK from an unofficial mirror.
+2. Download the newest file named like `spotify-car-controller-tb-x505f-v1.0.1.apk` and its `SHA256SUMS.txt` file. If no signed release exists yet, build from source using the README instead of downloading an APK from an unofficial mirror.
 3. Download the current **SDK Platform-Tools for Windows** from [Google's official page](https://developer.android.com/tools/releases/platform-tools). Accept Google's license and save the ZIP.
 4. Install the [official Spotify app for Windows](https://www.spotify.com/download/windows/) if it is not already installed.
 5. Download this repository as a ZIP from GitHub and extract it. The safe PowerShell setup scripts are in its `scripts` folder.
@@ -32,7 +32,7 @@ The Windows Spotify app is the playback endpoint. No separate Windows companion 
 Optional checksum verification in PowerShell:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\spotify-car-controller-tb-x505f-v1.0.0.apk
+Get-FileHash -Algorithm SHA256 .\spotify-car-controller-tb-x505f-v1.0.1.apk
 Get-Content .\SHA256SUMS.txt
 ```
 
@@ -92,7 +92,7 @@ All included scripts repeat this model check and stop without changing the devic
 In File Explorer, open the extracted repository folder. Click the address bar, type `powershell`, and press Enter. Then run:
 
 ```powershell
-.\scripts\install-apk.ps1 -Apk 'C:\path\to\spotify-car-controller-tb-x505f-v1.0.0.apk'
+.\scripts\install-apk.ps1 -Apk 'C:\path\to\spotify-car-controller-tb-x505f-v1.0.1.apk'
 .\scripts\grant-supported-permissions.ps1
 .\scripts\enable-autostart.ps1
 ```
@@ -147,7 +147,7 @@ From the hidden administrator menu you can:
 - choose or open Android Wi-Fi settings;
 - set brightness and inactivity dimming;
 - reconnect the Spotify account;
-- choose the preferred Windows playback device;
+- switch playback to a listed Spotify device manually;
 - show or hide the clock; and
 - exit dedicated mode safely.
 
@@ -173,14 +173,14 @@ Only do this after the pilot works.
 7. Reinstall and provision:
 
    ```powershell
-   .\scripts\install-apk.ps1 -Apk 'C:\path\to\spotify-car-controller-tb-x505f-v1.0.0.apk'
+   .\scripts\install-apk.ps1 -Apk 'C:\path\to\spotify-car-controller-tb-x505f-v1.0.1.apk'
    .\scripts\grant-supported-permissions.ps1
    .\scripts\configure-device-owner.ps1
    .\scripts\enable-autostart.ps1
    ```
 
 8. The Device Owner script explains the change and requires you to type uppercase `YES` before applying it.
-9. Re-enter the admin PIN, Spotify Client ID/account, brightness, Wi-Fi, and preferred PC.
+9. Re-enter the admin PIN, Spotify Client ID/account, brightness, and Wi-Fi. Playback follows Spotify's active device unless you manually select another device.
 10. Reboot at least twice. Confirm direct launch, hidden system bars, lock-task confinement, Wi-Fi reconnection, charging-only screen wake, and crash recovery.
 
 Device Owner and lock-task policy are Android-supported management features. They do not root or reflash the tablet, but returning to Device Owner after removing it normally requires another factory reset.

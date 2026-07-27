@@ -72,7 +72,6 @@ class MainActivity : Activity(), SurfaceActions {
     private var wifiLock: WifiManager.WifiLock? = null
     private var powerReceiver: BroadcastReceiver? = null
     private var screenReceiver: BroadcastReceiver? = null
-    private var lastDeviceResolveAt = 0L
     private var sessionStartMs: Long = 0L
     private var sessionsIncremented = false
     private var collectionReturnScreen = SurfaceScreen.LIBRARY
@@ -212,18 +211,7 @@ class MainActivity : Activity(), SurfaceActions {
         }
         io.execute {
             try {
-                var playback = api.playback() ?: PlaybackInfo()
-                if (store.targetDeviceName.isNotBlank() && System.currentTimeMillis() - lastDeviceResolveAt > 30_000L) {
-                    lastDeviceResolveAt = System.currentTimeMillis()
-                    val match = PlaybackRules.preferredDevice(api.devices(), store.targetDeviceName)
-                    if (match != null) {
-                        store.targetDeviceId = match.id
-                        if (playback.deviceId != match.id) {
-                            api.transfer(match.id, false)
-                            playback = playback.copy(deviceId = match.id, deviceName = match.name, volume = match.volume)
-                        }
-                    }
-                }
+                val playback = api.playback() ?: PlaybackInfo()
                 val newTrack = playback.track.uri != lastTrackUri
                 val saved = if (newTrack && playback.track.uri.isNotBlank()) api.isSaved(playback.track.uri) else surface.liked
                 main.post {
@@ -546,8 +534,6 @@ class MainActivity : Activity(), SurfaceActions {
     }
 
     override fun onDevice(device: SpotifyDevice) {
-        store.targetDeviceId = device.id
-        store.targetDeviceName = device.name
         command("Connected to ${device.name}") { api.transfer(device.id, false) }
         surface.playback = surface.playback.copy(deviceId = device.id, deviceName = device.name)
         surface.screen = SurfaceScreen.NOW_PLAYING
@@ -588,8 +574,6 @@ class MainActivity : Activity(), SurfaceActions {
     }
     private fun loadDevices() = backgroundLoad("Finding Spotify devices…", { api.devices() }) { found ->
         surface.devices = found
-        val matching = PlaybackRules.preferredDevice(found, store.targetDeviceName)
-        if (matching != null) store.targetDeviceId = matching.id
     }
 
     private fun <T> backgroundLoad(message: String, task: () -> T, result: (T) -> Unit) {
@@ -638,7 +622,9 @@ class MainActivity : Activity(), SurfaceActions {
         }
     }
 
-    private fun targetId(): String? = store.targetDeviceId.ifBlank { null }
+    // Omitting device_id makes Spotify apply commands to whichever player is active
+    // at request time. A transfer occurs only after an explicit tap in Devices.
+    private fun targetId(): String? = null
     
     private var notificationGeneration = 0
     private fun showNotification(msg: String, type: NotificationType, duration: Long = 2500L) {
@@ -690,7 +676,7 @@ class MainActivity : Activity(), SurfaceActions {
             "Spotify Client ID",
             "Wi-Fi settings",
             "Display brightness",
-            "Preferred PC / playback device",
+            "Switch playback device",
             "Screen dimming",
             "Automatic screen-off",
             if (store.clockEnabled) "Clock: shown" else "Clock: hidden",
@@ -825,8 +811,8 @@ class MainActivity : Activity(), SurfaceActions {
         val owner = if (deviceMode.isDeviceOwner) "yes" else "no"
         val lock = if (deviceMode.isLockTaskPermitted) "yes" else "no"
         val signed = if (store.load() != null) "yes" else "no"
-        AlertDialog.Builder(this).setTitle("Car Thing Controller 1.0.0")
-            .setMessage("Device Owner: $owner\nLock task allowed: $lock\nSpotify connected: $signed\nPreferred device: ${store.targetDeviceName.ifBlank { "automatic" }}\n\nHold the clock for 2.5 seconds to reopen this menu.")
+        AlertDialog.Builder(this).setTitle("Car Thing Controller ${BuildConfig.VERSION_NAME}")
+            .setMessage("Device Owner: $owner\nLock task allowed: $lock\nSpotify connected: $signed\nActive device: ${surface.playback.deviceName}\nAutomatic device switching: off\n\nHold the clock for 2.5 seconds to reopen this menu.")
             .setPositiveButton("Close", null).show()
     }
 

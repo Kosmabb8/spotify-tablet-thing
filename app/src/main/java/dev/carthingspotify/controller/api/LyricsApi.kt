@@ -19,7 +19,7 @@ class LyricsApi {
             val connection = (url.openConnection() as HttpURLConnection).apply {
                 connectTimeout = 5000
                 readTimeout = 5000
-                setRequestProperty("User-Agent", "CarThingController/1.0.0")
+                setRequestProperty("User-Agent", "CarThingController/1.0.1")
             }
             if (connection.responseCode == 200) {
                 val text = connection.inputStream.bufferedReader().use { it.readText() }

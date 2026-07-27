@@ -27,7 +27,7 @@
 ## Controls return 403, 404 or 429
 
 - `403`: Premium or an OAuth scope is missing. Disconnect and connect again to grant the current scopes.
-- `404`: Spotify has no active player or the remembered device is asleep. Start playback once on Windows.
+- `404`: Spotify has no active player. Start playback on the intended device, or select it manually from the Devices screen.
 - `429`: the app displays the wait and honors Spotify's `Retry-After`; do not repeatedly reconnect or tap controls during it.
 
 ## Playlist contents are empty
