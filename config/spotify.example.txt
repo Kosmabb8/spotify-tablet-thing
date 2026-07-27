@@ -1,0 +1,6 @@
+# Public runtime configuration example (entered in the PIN-protected admin menu)
+spotify_client_id=YOUR_PUBLIC_CLIENT_ID
+spotify_redirect_uri=http://127.0.0.1:25566/callback
+preferred_spotify_device_name=YOUR_WINDOWS_PC_NAME
+
+# There is intentionally no client_secret. Mobile PKCE clients must not embed one.

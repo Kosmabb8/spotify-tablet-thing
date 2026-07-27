@@ -1,0 +1,57 @@
+# Gradle
+.gradle
+/build
+/*/build
+/gradle.properties
+/local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+.shelf/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+captures/
+
+# Artifacts & Secrets
+.artifacts/
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.apk
+*.aab
+*.log
+*.hprof
+hs_err_pid*
+signing.properties
+keystore.properties
+secrets.properties
+google-services.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Private Configuration
+.env
+.env.*
+!.env.example
+config/spotify.txt
+scripts/state/
+backups/
+
+# Local Tools
+.android-sdk/
+.audit-tools/
+audit-results/
+.android-commandline-tools.zip
+

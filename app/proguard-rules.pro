@@ -1,0 +1,3 @@
+-keep class dev.carthingspotify.controller.device.CarThingAdminReceiver { *; }
+-keep class dev.carthingspotify.controller.device.BootReceiver { *; }
+-keep class dev.carthingspotify.controller.device.RestartReceiver { *; }

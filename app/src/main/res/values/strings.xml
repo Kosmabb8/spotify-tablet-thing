@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Car Thing Controller</string>
+    <string name="device_admin_label">Car Thing kiosk administrator</string>
+    <string name="device_admin_description">Controls kiosk mode on this dedicated Spotify controller.</string>
+    <string name="percent_format">%1$d%%</string>
+    <string name="integer_format">%1$d</string>
+</resources>

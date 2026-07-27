@@ -1,0 +1,8 @@
+# Spotify Developer Dashboard Configuration
+
+# 1. Create an app at https://developer.spotify.com/dashboard
+# 2. Add the following Redirect URI to your app settings:
+spotify_redirect_uri=http://127.0.0.1:25566/callback
+
+# 3. Copy your Client ID and enter it into the app's Admin Menu (hold the clock for 2.5s)
+spotify_client_id=YOUR_SPOTIFY_CLIENT_ID
