@@ -1,6 +1,6 @@
 # Third-party notices
 
-This repository contains original application code and does not redistribute Spotify software, music, album artwork, credentials, or proprietary APIs.
+This repository contains original application code and does not redistribute Spotify software, audio, credentials, or proprietary APIs. Documentation screenshots incidentally display artwork and Spotify-provided interface metadata selected by the project maintainer.
 
 ## Build and test dependencies
 
@@ -21,4 +21,4 @@ When enabled, the app sends the current track name, artist, album and duration t
 
 The application interoperates with the official Spotify Accounts and Web APIs under Spotify's developer terms. Spotify, Spotify Connect, Car Thing, Android, Lenovo, Windows, and related names are trademarks of their respective owners. Their use here identifies compatibility only and does not imply endorsement.
 
-Interface previews use fictional track names and original abstract vector artwork. No Spotify logo or third-party album cover is included.
+Interface screenshots are real captures supplied by the project maintainer. Spotify metadata and album/playlist artwork visible in those screenshots remain the property of their respective rights holders and are included only to document the application interface.

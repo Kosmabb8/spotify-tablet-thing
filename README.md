@@ -7,7 +7,7 @@ The recommended deployment is **stock Android 10 + this app as the Home launcher
 > [!CAUTION]
 > This project is tested only on the **Lenovo TB-X505F running stock Android 10 in landscape at 1280×800**. The included ADB scripts refuse other tablet models.
 
-> This is an independent personal controller and is not affiliated with Spotify or Lenovo. It contains no Spotify software, credentials, music, or third-party album artwork.
+> This is an independent personal controller and is not affiliated with Spotify or Lenovo. It contains no Spotify software, credentials, or audio. Documentation screenshots contain user-selected Spotify metadata and artwork.
 
 ## Downloads and installation
 
@@ -18,17 +18,19 @@ The recommended deployment is **stock Android 10 + this app as the Home launcher
 
 Release APKs must always use the same private signing key so Android can install future updates in place. The key and passwords never belong in this repository.
 
-## Interface previews
+## Interface screenshots
 
-| Now Playing | Playlist library |
-|:--:|:--:|
-| ![Now Playing with fictional content](docs/images/now-playing.svg) | ![Playlist library with fictional content](docs/images/library.svg) |
+### Now Playing
 
-### Playlist detail
+![Now Playing interface](docs/images/now-playing.png)
 
-![Playlist track browser with fictional content](docs/images/playlist-detail.svg)
+### Navigation and setup
 
-These vector previews reproduce the app's 1280×800 layout. Every name, artwork, playback value, device state, and timestamp is fictional.
+| Library | Search | Up Next | Devices | Admin PIN |
+|:--:|:--:|:--:|:--:|:--:|
+| ![Library interface](docs/images/library.png) | ![Search interface](docs/images/search.png) | ![Up Next interface](docs/images/queue.png) | ![Devices interface](docs/images/devices.png) | ![Administrator PIN interface](docs/images/admin-keypad.png) |
+
+These are real application captures supplied by the project maintainer. They contain visible playlist, library, account-display, playback-device, and artwork information, but no Spotify credentials, Client Secret, OAuth token, Wi-Fi password, or signing material.
 
 ## What works
 
