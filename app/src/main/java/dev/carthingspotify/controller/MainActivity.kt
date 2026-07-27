@@ -142,6 +142,7 @@ class MainActivity : Activity(), SurfaceActions {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        configureFullscreenWindow()
         CrashRestarter.install(applicationContext)
         store = SecureTokenStore(this)
         auth = SpotifyAuth(applicationContext, store)
@@ -930,6 +931,7 @@ class MainActivity : Activity(), SurfaceActions {
 
     @Suppress("DEPRECATION")
     private fun enterImmersive() {
+        configureFullscreenWindow()
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
             View.SYSTEM_UI_FLAG_FULLSCREEN or
@@ -937,6 +939,18 @@ class MainActivity : Activity(), SurfaceActions {
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
             View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    }
+
+    @Suppress("DEPRECATION")
+    private fun configureFullscreenWindow() {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
+        window.addFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN or
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+        window.statusBarColor = Color.TRANSPARENT
+        window.navigationBarColor = Color.TRANSPARENT
     }
 
     private fun showToast(message: String, duration: Long = 2_800L) {
